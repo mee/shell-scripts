@@ -1,0 +1,10 @@
+function memhogs() {
+    ps -e -opid,rss:7,%mem,args --sort -rss --width $COLUMNS | head -n ${1:-11}
+}
+
+function pgf() {
+    PIDS=$(pgrep -d, $1)
+    if [ ! -z $PIDS ]; then
+        ps -fp $PIDS
+    fi
+}
